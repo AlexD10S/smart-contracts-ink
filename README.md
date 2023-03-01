@@ -12,8 +12,35 @@ Build the WebAssembly for the contract:
 cargo +nightly contract build
 ```
 
-To deploy lthe SCs locally, move to substrate-node-template and run:
+To deploy lthe SCs locally,  download a precompiled Substrate Contracts Node:
+```shell
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag <latest-tag> --force --locked
+```
+
+And run:
 ```shell
 substrate-contracts-node --dev
 ```
 Then deploy them using the Contracts UI from Substrate: https://contracts-ui.substrate.io/ uploading the .contract file generated after the build.
+
+Deploy the contract with CLI:
+```shell
+cargo contract instantiate --constructor new --args "false" --suri //Alice --salt $(date +%s)
+```
+
+Interact with the SC using cargo-contract
+Example:
+```shell
+cargo contract call --contract SC-ADDRESS --message flip --suri //Alice 
+cargo contract call --contract SC-ADDRESS --message get --suri //Alice --dry-run
+```
+
+### Troubleshooting
+```error
+ERROR: cargo-contract cannot build using the "stable" channel. Switch to nightly. See https://github.com/paritytech/cargo-contract#build-requires-the-nightly-toolchain
+```
+
+Run
+```shell
+rustup default nightly
+```
