@@ -44,3 +44,7 @@ Run
 ```shell
 rustup default nightly
 ```
+
+### TODO
+- Cross_contract_flipper has no unit test (not support yet), check:
+https://substrate.stackexchange.com/questions/28/how-to-test-cross-contract-ink-contracts

@@ -1,7 +1,11 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
+pub use self::flipper::{
+    Flipper,
+    FlipperRef,
+};
 #[ink::contract]
-mod flipper {
+pub mod flipper {
 
     /// Defines the storage of your contract.
     /// Add new fields to the below struct in order
